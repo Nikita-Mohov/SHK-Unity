@@ -1,18 +1,38 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class Enemy : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private float _speed;
+
+    private Vector3 _target;
+
+    public event UnityAction<Enemy> Died;
+
+    private void Start()
     {
-        
+        SetTarget();
     }
 
-    // Update is called once per frame
-    void Update()
+    private void Update()
     {
-        
+        transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
+        if(transform.position == _target)
+        {
+            SetTarget();
+        }
+    }
+
+    private void SetTarget()
+    {
+        _target = Random.insideUnitCircle * 4;
+    }
+
+    public void Die()
+    {
+        Died?.Invoke(this);
+        Destroy(gameObject);
     }
 }
