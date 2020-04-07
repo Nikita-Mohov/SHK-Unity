@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerBonusSystem))]
+
 public class PlayerCollision : MonoBehaviour
 {
     private PlayerBonusSystem _bonusSystem;
 
     private void Start()
     {
-        _bonusSystem = gameObject.GetComponent<PlayerBonusSystem>();
+        _bonusSystem = GetComponent<PlayerBonusSystem>();
     }
 
     private void OnTriggerEnter(Collider other)

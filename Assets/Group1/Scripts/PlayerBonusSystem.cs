@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+[RequireComponent(typeof(PlayerMovement))]
+
 public class PlayerBonusSystem : MonoBehaviour
 {
     [SerializeField] private float _bonusDuration;
@@ -11,7 +13,7 @@ public class PlayerBonusSystem : MonoBehaviour
 
     private void Start()
     {
-        _playerMovement = gameObject.GetComponent<PlayerMovement>();
+        _playerMovement = GetComponent<PlayerMovement>();
         _currentBonuses = new List<Bonus>();
     }
 

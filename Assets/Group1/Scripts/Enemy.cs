@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
 
     private void Start()
     {
-        SetTarget();
+        GetNewTarget();
     }
 
     private void Update()
@@ -21,11 +21,11 @@ public class Enemy : MonoBehaviour
         transform.position = Vector3.MoveTowards(transform.position, _target, _speed * Time.deltaTime);
         if(transform.position == _target)
         {
-            SetTarget();
+            GetNewTarget();
         }
     }
 
-    private void SetTarget()
+    private void GetNewTarget()
     {
         _target = Random.insideUnitCircle * 4;
     }
