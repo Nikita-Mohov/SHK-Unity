@@ -4,12 +4,11 @@ using UnityEngine;
 
 public class Bonus 
 {
-    private float _timeLeft;
+    public float TimeLeft { get; set; }
 
     public Bonus (float timeLeft)
     {
-        _timeLeft = timeLeft;
+        TimeLeft = timeLeft;
     }
 
-    public float TimeLeft { get => _timeLeft; set => _timeLeft = value; }
 }
